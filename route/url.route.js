@@ -2,8 +2,9 @@ const express = require("express");
 const { ShortUrlModel } = require("../model/url.model.js");
 const { generateShortUrl } = require("../middleware/shortmid.js");
 const urlRouter = express.Router();
+const { auth } = require("../middleware/auth.js");
 
-urlRouter.post("/shorten", async (req, res) => {
+urlRouter.post("/shorten", auth, async (req, res) => {
   try {
     const { originalUrl } = req.body;
 
