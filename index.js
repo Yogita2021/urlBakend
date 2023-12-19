@@ -4,7 +4,7 @@ require("dotenv").config();
 const { connection } = require("./config/db");
 const { urlRouter } = require("./route/url.route.js");
 const { userRoute } = require("./route/user.route.js");
-const { auth } = require("./middleware/auth.js");
+
 const app = express();
 
 app.use(express.json());
@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRoute);
-app.use(auth);
+
 app.use("/url", urlRouter);
 
 app.listen(process.env.port, async () => {
